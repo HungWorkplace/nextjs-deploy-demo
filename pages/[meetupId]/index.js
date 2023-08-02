@@ -37,8 +37,9 @@ export async function getStaticPaths() {
 
   return {
     // false: just supports these params here. Otherwise, Visitors get 404 page
-    // true: support all params out of these params. Not just these params but All incoming request
-    fallback: false,
+    // true: support all params out of these params. Not just these params but All incoming request. Render empty page before path is generated
+    // 'blocking': list of paths
+    fallback: "blocking",
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
